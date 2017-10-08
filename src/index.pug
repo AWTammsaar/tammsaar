@@ -1,0 +1,56 @@
+include clutter
+doctype html
+head
+    // Meta tags
+    meta(charset="utf-8")
+    title Al William Tammsaar
+    meta(name="description" content="Al William Tammsaar is a computer scientist using data to better understand people and shape behavior." +
+    "He is currently living in Denmark at studying at University of Copenhagen")
+    meta(name="author" content="Al William Tammsaar")
+    +favicons
+    meta(name="theme-color" content="#ffffff ")
+    // Mobile specific meta
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    // Stylesheets
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+    link(href="./css/normalize.css" rel="stylesheet")
+    link(href="./css/skeleton.css" rel="stylesheet")
+    link(href="./css/style.css" rel="stylesheet")
+    // Fonts and analytics (located in clutter.pug)
+    +analytics
+    +typekit
+
+body
+    .landing
+        .main
+            .greeting
+                .header.top Hi, my name is
+                img.awticonsig(src="./images/awticonsig.svg")
+                .header.bot I make digital products
+                .cf
+        .content
+            .color-offset
+            .panel
+                p Estonia-based UX/dev/product person. Currently I work with the lovely people at
+                    a(href="https://www.waystone.io") &nbsp;Waystone&nbsp;
+                    |to make cool things.
+            .panel.panel-image
+                img(src="./images/theteam.png")
+            .panel
+                p I love meeting interesting people. Hit me up on twitter
+                    a(href="https://twitter.com/AWTammsaar") &nbsp;@AWTammsaar&nbsp;
+                    |or add me on
+                    a(href="https://www.linkedin.com/in/al-william-tammsaar-247042102") &nbsp;Linkedin.&nbsp;
+                    | I'm all ears :)
+        footer
+            .socials
+                a.fa.fa-twitter(href="https://twitter.com/AWTammsaar")
+                | &nbsp;|&nbsp;
+                a.fa.fa-linkedin(href="https://www.linkedin.com/in/al-william-tammsaar-247042102")
+                | &nbsp;|&nbsp;
+                a.fa.fa-facebook(href="https://www.facebook.com/al.tammsaar")
+                | &nbsp;|&nbsp;
+                a.fa.fa-medium(href="https://medium.com/@rezonance")
+                | &nbsp;|&nbsp;
+                a.fa.fa-spotify(href="https://play.spotify.com/user/1176604683")
+            p © Al William Tammsaar 2016
