@@ -36,11 +36,5 @@ mixin analytics
         ga('create', 'UA-18134562-10', 'auto');
         ga('send', 'pageview');
 
-mixin typekit
-    script(src="https://use.typekit.net/yzb7gaq.js")
-    script.
-        try {
-            Typekit.load({async: false});
-        } catch (e) {
-        }
+mixin fonts
     link(href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet")
