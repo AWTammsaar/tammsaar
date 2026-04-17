@@ -2,10 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Al William Tammsaar</title>
-  <meta name="description" content="Al William Tammsaar is an Estonian Computer Scientist and entrepreneur working to decarbonize the planet.">
+  <title>Al William Tammsaar — Founder & CPO of Soldera</title>
+  <meta name="description" content="Al William Tammsaar is the co-founder and CPO of Soldera, building the first automated platform for global renewable energy certificate compliance. Background in computer science, data science, and climate finance. MSc from University of Copenhagen.">
   <meta name="author" content="Al William Tammsaar">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tammsaar.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Al William Tammsaar — Founder & CPO of Soldera">
+  <meta property="og:description" content="Building the first automated platform for global renewable energy certificate compliance. Computer scientist, product leader, climate finance.">
+  <meta property="og:url" content="https://tammsaar.com/">
+  <meta property="og:image" content="https://tammsaar.com/images/awtcrop.jpg">
+  <meta property="og:site_name" content="Al William Tammsaar">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Al William Tammsaar — Founder & CPO of Soldera">
+  <meta name="twitter:description" content="Building the first automated platform for global renewable energy certificate compliance.">
+  <meta name="twitter:image" content="https://tammsaar.com/images/awtcrop.jpg">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon-180x180.png">
@@ -14,17 +30,68 @@
   <link rel="manifest" href="images/favicon/manifest.json">
   <meta name="theme-color" content="#ffffff">
 
+  <!-- Preconnect for external resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <!-- Styles -->
   <link href="./css/style.min.css" rel="stylesheet">
   <link href="./css/animations.css" rel="stylesheet">
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
-  <script src="https://use.fontawesome.com/fc5f3201db.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://use.fontawesome.com/fc5f3201db.js" async defer></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Al William Tammsaar",
+    "url": "https://tammsaar.com",
+    "jobTitle": "Founder & CPO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Soldera",
+      "url": "https://www.soldera.org",
+      "description": "Automated platform for global renewable energy certificate compliance and reporting"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Copenhagen"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/awtammsaar",
+      "https://github.com/AWTammsaar"
+    ],
+    "knowsAbout": [
+      "renewable energy certificates",
+      "climate finance",
+      "energy attribute certificates",
+      "Guarantees of Origin",
+      "product management",
+      "data science",
+      "carbon markets",
+      "RE100 compliance",
+      "GHG Protocol"
+    ],
+    "nationality": "Estonian",
+    "description": "Estonian computer scientist and entrepreneur building Soldera, the first automated platform for global renewable energy certificate compliance. Previously designed the Solid World protocol for forward carbon credit liquidity."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Al William Tammsaar",
+    "url": "https://tammsaar.com"
+  }
+  </script>
 </head>
 <body class="landing">
-  <div class="content">
-    <div class="signature">
+  <main class="content">
+    <section class="signature" aria-label="Introduction">
+      <h1 class="sr-only">Al William Tammsaar</h1>
       <div class="signature-container">
         <div class="header top">Hi, my name is</div>
         <svg class="awticonsig" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -43,11 +110,11 @@
     <feBlend in="SourceGraphic" in2="darkGrain" mode="multiply" result="darkened"/>
 
     <!-- LAYER 2: Fine light grain (high frequency, more red) -->
-    <feTurbulence id="crt-turb2" type="fractalNoise" baseFrequency="0.55" numOctaves="1" seed="0" result="fineNoise"/>
+    <feTurbulence id="crt-turb2" type="fractalNoise" baseFrequency="0.4" numOctaves="1" seed="0" result="fineNoise"/>
     <feComponentTransfer in="fineNoise" result="lightGrain">
-      <feFuncR type="discrete" tableValues="0.1 0.85"/>
-      <feFuncG type="discrete" tableValues="0 0.12"/>
-      <feFuncB type="discrete" tableValues="0 0.08"/>
+      <feFuncR type="discrete" tableValues="0.1 0.82"/>
+      <feFuncG type="discrete" tableValues="0 0.23"/>
+      <feFuncB type="discrete" tableValues="0 0.19"/>
     </feComponentTransfer>
     <!-- Screen fine red-tinted light grain onto darkened result -->
     <feBlend in="darkened" in2="lightGrain" mode="screen" result="grained"/>
@@ -261,10 +328,10 @@
         <div class="header bot">I untangle complex systems for a living</div>
         <div class="cf"></div>
       </div>
-    </div>
-    <div class="about-me">
+    </section>
+    <section class="about-me" aria-label="About">
       <div class="panel panel-image">
-        <img src="./images/awtcrop.jpg" alt="Al William Tammsaar">
+        <img src="./images/awtcrop.jpg" alt="Al William Tammsaar, founder and CPO of Soldera">
       </div>
       <h3>About</h3>
       <p>
@@ -288,10 +355,10 @@
         <div class="socials">
           <a class="fa fa-github" href="https://github.com/AWTammsaar"></a>&nbsp;|&nbsp;<a class="fa fa-linkedin" href="https://www.linkedin.com/in/awtammsaar"></a>
         </div>
-        <p>&copy; Al William Tammsaar 2025</p>
+        <p>&copy; Al William Tammsaar 2026</p>
       </footer>
-    </div>
-  </div>
+    </section>
+  </main>
   <!-- CRT noise hover + enable hover after entrance -->
   <script>
   (function() {
