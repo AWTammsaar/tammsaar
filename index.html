@@ -32,24 +32,24 @@
 <defs>
   <!-- CRT noise filter for hover effect on red frame -->
   <filter id="crt-noise" x="-5%" y="-5%" width="110%" height="110%">
-    <!-- LAYER 1: Fine dark grain (high frequency) -->
-    <feTurbulence id="crt-turb2" type="fractalNoise" baseFrequency="0.55" numOctaves="1" seed="0" result="fineNoise"/>
-    <feComponentTransfer in="fineNoise" result="darkGrain">
+    <!-- LAYER 1: Chunky dark grain (low frequency) -->
+    <feTurbulence id="crt-turb" type="fractalNoise" baseFrequency="0.15" numOctaves="1" seed="0" result="chunkNoise"/>
+    <feComponentTransfer in="chunkNoise" result="darkGrain">
       <feFuncR type="discrete" tableValues="0.2 0.6"/>
       <feFuncG type="discrete" tableValues="0.02 0.15"/>
       <feFuncB type="discrete" tableValues="0.02 0.12"/>
     </feComponentTransfer>
-    <!-- Multiply dark grain onto source — subtle dark speckles -->
+    <!-- Multiply chunky dark grain onto source -->
     <feBlend in="SourceGraphic" in2="darkGrain" mode="multiply" result="darkened"/>
 
-    <!-- LAYER 2: Chunky light grain (low frequency, softer) -->
-    <feTurbulence id="crt-turb" type="fractalNoise" baseFrequency="0.15" numOctaves="1" seed="0" result="chunkNoise"/>
-    <feComponentTransfer in="chunkNoise" result="lightGrain">
-      <feFuncR type="discrete" tableValues="0.1 0.8"/>
-      <feFuncG type="discrete" tableValues="0 0.35"/>
-      <feFuncB type="discrete" tableValues="0 0.3"/>
+    <!-- LAYER 2: Fine light grain (high frequency, more red) -->
+    <feTurbulence id="crt-turb2" type="fractalNoise" baseFrequency="0.55" numOctaves="1" seed="0" result="fineNoise"/>
+    <feComponentTransfer in="fineNoise" result="lightGrain">
+      <feFuncR type="discrete" tableValues="0.1 0.85"/>
+      <feFuncG type="discrete" tableValues="0 0.12"/>
+      <feFuncB type="discrete" tableValues="0 0.08"/>
     </feComponentTransfer>
-    <!-- Screen light grain onto darkened result — bright patches pop over -->
+    <!-- Screen fine red-tinted light grain onto darkened result -->
     <feBlend in="darkened" in2="lightGrain" mode="screen" result="grained"/>
 
     <!-- Mild edge jitter for extra CRT feel -->
