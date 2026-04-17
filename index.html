@@ -32,19 +32,29 @@
 <defs>
   <!-- CRT noise filter for hover effect on red frame -->
   <filter id="crt-noise" x="-5%" y="-5%" width="110%" height="110%">
-    <!-- 1. Generate noise -->
-    <feTurbulence id="crt-turb" type="fractalNoise" baseFrequency="0.15" numOctaves="1" seed="0" result="noise"/>
-    <!-- 2. Snap to red-tinted grain (dark red / bright red-white) -->
-    <feComponentTransfer in="noise" result="grain">
-      <feFuncR type="discrete" tableValues="0.1 1"/>
-      <feFuncG type="discrete" tableValues="0 0.45"/>
-      <feFuncB type="discrete" tableValues="0 0.4"/>
+    <!-- LAYER 1: Fine dark grain (high frequency) -->
+    <feTurbulence id="crt-turb2" type="fractalNoise" baseFrequency="0.55" numOctaves="1" seed="0" result="fineNoise"/>
+    <feComponentTransfer in="fineNoise" result="darkGrain">
+      <feFuncR type="discrete" tableValues="0.2 0.6"/>
+      <feFuncG type="discrete" tableValues="0.02 0.15"/>
+      <feFuncB type="discrete" tableValues="0.02 0.12"/>
     </feComponentTransfer>
-    <!-- 3. Screen grain onto source — bright patches pop forward, darks stay subtle -->
-    <feBlend in="SourceGraphic" in2="grain" mode="screen" result="grained"/>
-    <!-- 4. Mild edge jitter for extra CRT feel -->
-    <feDisplacementMap in="grained" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
-    <!-- 5. Clip to original shape so nothing bleeds outside -->
+    <!-- Multiply dark grain onto source — subtle dark speckles -->
+    <feBlend in="SourceGraphic" in2="darkGrain" mode="multiply" result="darkened"/>
+
+    <!-- LAYER 2: Chunky light grain (low frequency, softer) -->
+    <feTurbulence id="crt-turb" type="fractalNoise" baseFrequency="0.15" numOctaves="1" seed="0" result="chunkNoise"/>
+    <feComponentTransfer in="chunkNoise" result="lightGrain">
+      <feFuncR type="discrete" tableValues="0.1 0.8"/>
+      <feFuncG type="discrete" tableValues="0 0.35"/>
+      <feFuncB type="discrete" tableValues="0 0.3"/>
+    </feComponentTransfer>
+    <!-- Screen light grain onto darkened result — bright patches pop over -->
+    <feBlend in="darkened" in2="lightGrain" mode="screen" result="grained"/>
+
+    <!-- Mild edge jitter for extra CRT feel -->
+    <feDisplacementMap in="grained" in2="chunkNoise" scale="4" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+    <!-- Clip to original shape so nothing bleeds outside -->
     <feComposite in="displaced" in2="SourceGraphic" operator="in"/>
   </filter>
 </defs>
@@ -287,6 +297,7 @@
   (function() {
     var container = document.querySelector('.signature-container');
     var turb = document.getElementById('crt-turb');
+    var turb2 = document.getElementById('crt-turb2');
     var raf = null;
     var seed = 0;
 
@@ -313,6 +324,7 @@
     function animateNoise() {
       seed = (seed + 1) % 100;
       turb.setAttribute('seed', seed);
+      turb2.setAttribute('seed', seed);
       raf = requestAnimationFrame(animateNoise);
     }
 
