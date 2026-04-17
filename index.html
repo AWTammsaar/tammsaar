@@ -34,13 +34,13 @@
   <filter id="crt-noise" x="-5%" y="-5%" width="110%" height="110%">
     <feTurbulence id="crt-turb" type="fractalNoise" baseFrequency="0.65" numOctaves="3" seed="0" result="noise"/>
     <!-- Displace the red paths for jitter -->
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
     <!-- Build a visible grain layer: extract luminance from noise, tint it red-ish -->
     <feColorMatrix in="noise" type="matrix"
       values="0 0 0 0 0.9
               0 0 0 0 0.15
               0 0 0 0 0.1
-              0 0 0 0.6 0" result="grain"/>
+              0 0 0 0.8 0" result="grain"/>
     <!-- Overlay the grain onto the displaced paths -->
     <feBlend in="displaced" in2="grain" mode="screen" result="static"/>
     <!-- Clip to original shape so grain doesn't bleed outside the red frame -->
@@ -289,8 +289,21 @@
     var raf = null;
     var seed = 0;
 
-    // Enable hover effects only after entrance animations finish
+    // Enable hover effects only after entrance animations finish.
+    // Clear the animation property so the 'forwards' fill no longer locks
+    // the final keyframe filter value – the hover CSS rule can now override it.
     setTimeout(function() {
+      var logo = document.getElementById('logo');
+      var sig  = document.getElementById('sig');
+
+      logo.style.animation = 'none';
+      logo.style.opacity   = '1';
+      logo.style.transform = 'scale(1)';
+
+      sig.style.animation  = 'none';
+      sig.style.opacity    = '1';
+      sig.style.transform  = 'scale(1)';
+
       container.classList.add('sig-ready');
     }, 900);
 

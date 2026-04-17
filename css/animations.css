@@ -99,10 +99,12 @@
  * animation completes) to avoid conflicting with the entrance keyframes.
  */
 .sig-ready #logo {
+  filter: none;
   transition: filter 0.15s ease;
 }
 
 .sig-ready #sig {
+  filter: none;
   transition: filter 0.25s ease;
 }
 
