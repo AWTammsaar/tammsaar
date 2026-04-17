@@ -33,8 +33,18 @@
   <!-- CRT noise filter for hover effect on red frame -->
   <filter id="crt-noise" x="-5%" y="-5%" width="110%" height="110%">
     <feTurbulence id="crt-turb" type="fractalNoise" baseFrequency="0.65" numOctaves="3" seed="0" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
-    <feComposite in="displaced" in2="SourceGraphic" operator="in"/>
+    <!-- Displace the red paths for jitter -->
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+    <!-- Build a visible grain layer: extract luminance from noise, tint it red-ish -->
+    <feColorMatrix in="noise" type="matrix"
+      values="0 0 0 0 0.9
+              0 0 0 0 0.15
+              0 0 0 0 0.1
+              0 0 0 0.6 0" result="grain"/>
+    <!-- Overlay the grain onto the displaced paths -->
+    <feBlend in="displaced" in2="grain" mode="screen" result="static"/>
+    <!-- Clip to original shape so grain doesn't bleed outside the red frame -->
+    <feComposite in="static" in2="SourceGraphic" operator="in"/>
   </filter>
 </defs>
 <style type="text/css">

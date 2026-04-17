@@ -110,11 +110,3 @@
   filter: url(#crt-noise);
 }
 
-/* Subtle scale on the whole SVG container on hover */
-.signature-container svg {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.signature-container:hover svg {
-  transform: scale(1.015);
-}
