@@ -33,12 +33,12 @@
   <!-- CRT noise filter for hover effect on red frame -->
   <filter id="crt-noise" x="-5%" y="-5%" width="110%" height="110%">
     <!-- 1. Generate noise -->
-    <feTurbulence id="crt-turb" type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="0" result="noise"/>
+    <feTurbulence id="crt-turb" type="fractalNoise" baseFrequency="0.15" numOctaves="1" seed="0" result="noise"/>
     <!-- 2. Snap to red-tinted grain (dark red / bright red-white) -->
     <feComponentTransfer in="noise" result="grain">
-      <feFuncR type="discrete" tableValues="0.3 1"/>
-      <feFuncG type="discrete" tableValues="0 0.15"/>
-      <feFuncB type="discrete" tableValues="0 0.1"/>
+      <feFuncR type="discrete" tableValues="0.15 1"/>
+      <feFuncG type="discrete" tableValues="0 0.25"/>
+      <feFuncB type="discrete" tableValues="0 0.2"/>
     </feComponentTransfer>
     <!-- 3. Multiply grain into the source — darkens random parts of the red fill -->
     <feBlend in="SourceGraphic" in2="grain" mode="multiply" result="grained"/>
