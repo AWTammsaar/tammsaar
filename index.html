@@ -40,8 +40,8 @@
       <feFuncG type="discrete" tableValues="0 0.25"/>
       <feFuncB type="discrete" tableValues="0 0.2"/>
     </feComponentTransfer>
-    <!-- 3. Multiply grain into the source — darkens random parts of the red fill -->
-    <feBlend in="SourceGraphic" in2="grain" mode="multiply" result="grained"/>
+    <!-- 3. Overlay grain onto source — adds texture without shifting average brightness -->
+    <feBlend in="SourceGraphic" in2="grain" mode="overlay" result="grained"/>
     <!-- 4. Mild edge jitter for extra CRT feel -->
     <feDisplacementMap in="grained" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
     <!-- 5. Clip to original shape so nothing bleeds outside -->
