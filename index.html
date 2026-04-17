@@ -36,9 +36,9 @@
     <feTurbulence id="crt-turb" type="fractalNoise" baseFrequency="0.15" numOctaves="1" seed="0" result="noise"/>
     <!-- 2. Snap to red-tinted grain (dark red / bright red-white) -->
     <feComponentTransfer in="noise" result="grain">
-      <feFuncR type="discrete" tableValues="0.55 1"/>
-      <feFuncG type="discrete" tableValues="0.08 0.3"/>
-      <feFuncB type="discrete" tableValues="0.06 0.25"/>
+      <feFuncR type="discrete" tableValues="0.35 1"/>
+      <feFuncG type="discrete" tableValues="0.02 0.4"/>
+      <feFuncB type="discrete" tableValues="0.02 0.35"/>
     </feComponentTransfer>
     <!-- 3. Overlay grain onto source — adds texture without shifting average brightness -->
     <feBlend in="SourceGraphic" in2="grain" mode="overlay" result="grained"/>
