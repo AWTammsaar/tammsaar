@@ -395,16 +395,14 @@
       raf = requestAnimationFrame(animateNoise);
     }
 
-    container.addEventListener('mouseenter', function() {
-      if (!raf) animateNoise();
-    });
+    function startNoise() { if (!raf) animateNoise(); }
+    function stopNoise() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
 
-    container.addEventListener('mouseleave', function() {
-      if (raf) {
-        cancelAnimationFrame(raf);
-        raf = null;
-      }
-    });
+    container.addEventListener('mouseenter', startNoise);
+    container.addEventListener('mouseleave', stopNoise);
+    container.addEventListener('touchstart', startNoise, {passive: true});
+    container.addEventListener('touchend', stopNoise, {passive: true});
+    container.addEventListener('touchcancel', stopNoise, {passive: true});
   })();
   </script>
 </body>
