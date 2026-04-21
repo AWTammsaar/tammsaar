@@ -395,8 +395,8 @@
       raf = requestAnimationFrame(animateNoise);
     }
 
-    function startNoise() { if (!raf) animateNoise(); }
-    function stopNoise() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+    function startNoise() { container.classList.add('crt-active'); if (!raf) animateNoise(); }
+    function stopNoise() { container.classList.remove('crt-active'); if (raf) { cancelAnimationFrame(raf); raf = null; } }
 
     container.addEventListener('mouseenter', startNoise);
     container.addEventListener('mouseleave', stopNoise);

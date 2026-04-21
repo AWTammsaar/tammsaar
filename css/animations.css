@@ -117,7 +117,7 @@
   transition: filter 0.15s ease;
 }
 
-.sig-ready:hover #logo {
+.sig-ready.crt-active #logo {
   filter: url(#crt-noise) !important;
 }
 
